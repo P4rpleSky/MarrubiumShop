@@ -2,7 +2,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer();
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
+
+app.UseAuthentication();
+app.UseAuthorization();  
 
 app.UseStaticFiles();
 //app.UseStatusCodePages("text/plain", "Error: Resource Not Found. Status code: {0}");
