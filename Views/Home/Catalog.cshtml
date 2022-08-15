@@ -1,205 +1,206 @@
 <html lang="ru">
-    <head>
-        <meta charset="utf-8">
-        <title>Catalog</title>
-        <link rel="shortcut icon" type="image/x-icon" href="~/img/favicon.ico" />
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;628&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="~/css/catalog_page.css"/>
-        <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css"/>
-    </head>
-    <body>
-        <header class="header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-2">
-                        <button class="logo"></button>
-                    </div>
-                    <div class="col-md-8">
-                        <ui class="main_menu">
-                            <li><button class="s1" href="#">О нас</button></li>
-                            <li><button class="s1" href="#">Каталог</button>
-                                <ul>
-                                    <li><button class="s2" href="#">Крема</button></li>
-                                    <li><button class="s2" href="#">Сыворотки</button></li>
-                                    <li><button class="s2" href="#">Очищающие средства</button></li>
-                                    <li><button class="s2" href="#">Маски</button></li>
-                                </ul>
-                            </li>
-                            <li><button class="s1" href="#">Доставка</button></li>
-                            <li><button class="s1" href="#">Контакты</button></li>
-                        </ui>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="buttons_menu">
-                            <button class="favourite"></button>
-                            <button class="cart"></button>
-                            <button class="search"></button>
-                        </div>
-                    </div>
+<head>
+    <meta charset="utf-8">
+    <title>Catalog</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/img/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;628&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/css/catalog_page.css"/>
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css"/>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <a class="logo" href="https://localhost:7199/"></a>
                 </div>
-            </div>
-        </header> 
-        <div class="main-block">
-            <div class="container">
-                <div class="row upper-section">
-                    <div class="col-md-3">
-                        <h1 class="catalog__title">Каталог</h1>
-                    </div>
+                <div class="col-md-8">
+                    <ui class="main_menu">
+                        <li><a class="s1" href="https://localhost:7199/about">О нас</a></li>
+                        <li>
+                            <a class="s1" href="https://localhost:7199/catalog">Каталог</a>
+                            <ul>
+                                <li><a class="s2" href="https://localhost:7199/catalog">Крема</a></li>
+                                <li><a class="s2" href="https://localhost:7199/catalog">Сыворотки</a></li>
+                                <li><a class="s2" href="https://localhost:7199/catalog">Очищающие средства</a></li>
+                                <li><a class="s2" href="https://localhost:7199/catalog">Маски</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="s1" href="https://localhost:7199/delivery">Доставка</a></li>
+                        <li><a class="s1" href="https://localhost:7199/contacts">Контакты</a></li>
+                    </ui>
                 </div>
-                <div class="row categories">
-                    <div class="col-md-3">
-                        <select id="type-of-product" name="type-of-product" class="sort">
-                            <option disabled selected>Тип продукта</option>
-                            <option value="lotion">Крема</option>
-                            <option value="serum">Сыворотки</option>
-                            <option value="сleaning">Очищающие средства</option>
-                            <option value="masks">Маски</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <select id="function" name="function" class="sort">
-                            <option disabled selected>По функции</option>
-                            <option value="rejuvenating">Омолаживающая</option>
-                            <option value="restoring">Восстанавливающая</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <select id="skin-type" name="skin-type" class="sort">
-                            <option disabled selected>Тип кожи</option>
-                            <option value="soft">Нежная</option>
-                            <option value="sensitive">Чувствительная</option>
-                            <option value="rough">Грубая</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <select id="sorting" name="sorting" class="sort">
-                            <option disabled selected>Сортировка</option>
-                            <option value="decs-price">По возрастанию цены</option>
-                            <option value="acs-price">По убыванию цены</option>
-                            <option value="most-popular">Самые популярные</option>
-                            <option value="best-rate">Лучшая оценка</option>
-                        </select>
-                    </div>
-
-                </div>
-                <div class="row products">
-                    <div class="col-md-3">
-                        <div class="product-section">
-                            <div class="visual">
-                                <button id="p1_1" class="product-preview"></button>
-                                <button class="set-like favourite"></button>
-                            </div>
-                            <p class="s2">Крем с ретинолом</p>
-                            <p class="s3">1000 р</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="product-section">
-                            <div class="visual">
-                                <button id="p1_2" class="product-preview"></button>
-                                <button class="set-like favourite"></button>
-                            </div>
-                            <p class="s2">Лосьон с центеллой</p>
-                            <p class="s3">1500 р</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="product-section">
-                            <div class="visual">
-                                <button id="p1_3" class="product-preview"></button>
-                                <button class="set-like favourite"></button>
-                            </div>
-                            <p class="s2">Серум с зеленым чаем</p>
-                            <p class="s3">1200 р</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="product-section">
-                            <div class="visual">
-                                <button id="p1_4" class="product-preview"></button>
-                                <button class="set-like favourite"></button>
-                            </div>
-                            <p class="s2">Сыворотка с полынью</p>
-                            <p class="s3">1600 р</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row products">
-                    <div class="col-md-3">
-                        <div class="product-section">
-                            <div class="visual">
-                                <button id="p2_1" class="product-preview"></button>
-                                <button class="set-like favourite"></button>
-                            </div>
-                            <p class="s2">Скраб с ванилью</p>
-                            <p class="s3">900 р</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="product-section">
-                            <div class="visual">
-                                <button id="p2_2" class="product-preview"></button>
-                                <button class="set-like favourite"></button>
-                            </div>
-                            <p class="s2">Крем под глаза</p>
-                            <p class="s3">2000 р</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="product-section">
-                            <div class="visual">
-                                <button id="p2_3" class="product-preview"></button>
-                                <button class="set-like favourite"></button>
-                            </div>
-                            <p class="s2">Крем с мятой</p>
-                            <p class="s3">1000 р</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="product-section">
-                            <div class="visual">
-                                <button id="p2_4" class="product-preview"></button>
-                                <button class="set-like favourite"></button>
-                            </div>
-                            <p class="s2">Глиняная маска с матча</p>
-                            <p class="s3">800 р</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div id="show-more" class="offset-md-4 col-md-4">
-                        <button class="page-button">Показать ещё</button>
+                <div class="col-md-2">
+                    <div class="buttons_menu">
+                        <a class="favourite" href="https://localhost:7199/my/favourite"></a>
+                        <a class="cart" href="https://localhost:7199/my/cart"></a>
+                        <a class="search" href="#"></a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <img src="img/logo.png" alt="Marrubium" class="footer-center">
-                    </div>
-                    <div class="offset-md-1 col-md-2">
-                        <div class="footer-menu-1 flex-cont">
-                            <button>О нас</button>
-                            <button>Каталог</button>
-                            <button>Контакты</button>
+    </header>
+    <div class="main-block">
+        <div class="container">
+            <div class="row upper-section">
+                <div class="col-md-3">
+                    <h1 class="catalog__title">Каталог</h1>
+                </div>
+            </div>
+            <div class="row categories">
+                <div class="col-md-3">
+                    <select id="type-of-product" name="type-of-product" class="sort">
+                        <option disabled selected>Тип продукта</option>
+                        <option value="lotion">Крема</option>
+                        <option value="serum">Сыворотки</option>
+                        <option value="сleaning">Очищающие средства</option>
+                        <option value="masks">Маски</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select id="function" name="function" class="sort">
+                        <option disabled selected>По функции</option>
+                        <option value="rejuvenating">Омолаживающая</option>
+                        <option value="restoring">Восстанавливающая</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select id="skin-type" name="skin-type" class="sort">
+                        <option disabled selected>Тип кожи</option>
+                        <option value="soft">Нежная</option>
+                        <option value="sensitive">Чувствительная</option>
+                        <option value="rough">Грубая</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select id="sorting" name="sorting" class="sort">
+                        <option disabled selected>Сортировка</option>
+                        <option value="decs-price">По возрастанию цены</option>
+                        <option value="acs-price">По убыванию цены</option>
+                        <option value="most-popular">Самые популярные</option>
+                        <option value="best-rate">Лучшая оценка</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="row products">
+                <div class="col-md-3">
+                    <div class="product-section">
+                        <div class="visual">
+                            <a id="p1_1" href="#" class="product-preview"></a>
+                            <a class="set-like favourite"></a>
                         </div>
+                        <a class="s2" href="#">Крем с ретинолом</a>
+                        <p class="s3">1000 р</p>
                     </div>
-                    <div class="col-md-3">
-                        <div class="footer-menu-2 flex-cont">
-                            <button>Доставка</button>
-                            <button>Напишите нам</button>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-section">
+                        <div class="visual">
+                            <a id="p1_2" href="#" class="product-preview"></a>
+                            <a class="set-like favourite"></a>
                         </div>
+                        <a class="s2" href="#">Лосьон с центеллой</a>
+                        <p class="s3">1500 р</p>
                     </div>
-                    <div class="col-md-3 ">
-                        <div class="tel-number footer-center">
-                            <p class="tel">+7(999)999-99-99</p>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-section">
+                        <div class="visual">
+                            <a id="p1_3" href="#" class="product-preview"></a>
+                            <a class="set-like favourite"></a>
                         </div>
+                        <a class="s2" href="#">Серум с зеленым чаем</a>
+                        <p class="s3">1200 р</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-section">
+                        <div class="visual">
+                            <a id="p1_4" href="#" class="product-preview"></a>
+                            <a class="set-like favourite"></a>
+                        </div>
+                        <a class="s2" href="#">Сыворотка с полынью</a>
+                        <p class="s3">1600 р</p>
                     </div>
                 </div>
             </div>
-        </div> 
-    </body>
+            <div class="row products">
+                <div class="col-md-3">
+                    <div class="product-section">
+                        <div class="visual">
+                            <a id="p2_1" href="#" class="product-preview"></a>
+                            <a class="set-like favourite"></a>
+                        </div>
+                        <a class="s2" href="#">Скраб с ванилью</a>
+                        <p class="s3">900 р</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-section">
+                        <div class="visual">
+                            <a id="p2_2" href="#" class="product-preview"></a>
+                            <a class="set-like favourite"></a>
+                        </div>
+                        <a class="s2" href="#">Крем под глаза</a>
+                        <p class="s3">2000 р</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-section">
+                        <div class="visual">
+                            <a id="p2_3" href="#" class="product-preview"></a>
+                            <a class="set-like favourite"></a>
+                        </div>
+                        <a class="s2" href="#">Крем с мятой</a>
+                        <p class="s3">1000 р</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-section">
+                        <div class="visual">
+                            <a id="p2_4" href="#" class="product-preview"></a>
+                            <a class="set-like favourite"></a>
+                        </div>
+                        <a class="s2" href="#">Глиняная маска с матча</a>
+                        <p class="s3">800 р</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="show-more" class="offset-md-4 col-md-4">
+                    <a class="page-button" href="#">Показать ещё</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="img/logo.png" alt="Marrubium" class="footer-center">
+                </div>
+                <div class="offset-md-1 col-md-2">
+                    <div class="footer-menu-1 flex-cont">
+                        <a href="https://localhost:7199/about">О нас</a>
+                        <a href="https://localhost:7199/catalog">Каталог</a>
+                        <a href="https://localhost:7199/contacts">Контакты</a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="footer-menu-2 flex-cont">
+                        <a href="https://localhost:7199/delivery">Доставка</a>
+                        <a href="mailto:aliev.af@edu.spbstu.ru">Напишите нам</a>
+                    </div>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="tel-number footer-center">
+                        <p class="tel">+7(999)999-99-99</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
