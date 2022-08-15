@@ -1,0 +1,327 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+* {
+    color: #515050;
+}
+
+button {
+    padding: 0;
+    display: block;
+    border-style: none;
+    font-weight: 400;
+    font-size: 20px;
+    color: #6C6867;
+    background: transparent;
+    background-repeat: no-repeat;
+}
+
+button:hover {
+    color: #8A73C5;
+}
+
+.s1 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.s2 {
+    font-size: 14px;
+    font-weight: regular;
+}
+
+.s3 {
+    font-size: 12px;
+    margin-bottom: 0;
+    font-weight: lighter;
+}
+
+.logo {
+    margin-top: 33px;
+    margin-bottom: 37px;
+    width: 143px;
+    height: 30px;
+    background-image: url("../img/logo.png");
+}
+
+.main_menu {
+    margin-top: 32px;
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
+
+.main_menu li button {
+    text-align: left;
+}
+
+.main_menu ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+}
+
+/* отображаем выпадающий список при наведении */
+.main_menu li:hover > ul {
+    width: 141px;
+    border: 1px solid #8A73C5;
+    background-color: #FFFFFF;
+    padding-top: 31px;
+    padding-left: 25px;
+    padding-bottom: 41px;
+    display: flex;
+    flex-direction: column;
+    gap: 29px;
+}
+
+/* первый уровень выпадающего списка */
+.main_menu li {
+    list-style: none;
+    position: relative;
+}
+
+.buttons_menu {
+    margin-top: 36.5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons_menu button {
+    height: 23px;
+    width: 23px;
+}
+
+.favourite {
+    background-image: url("../img/favourite.png");
+}
+
+.favourite:hover {
+    background-image: url("../img/favourite_hover.png");
+}
+
+.cart {
+    background-image: url("../img/cart.png");
+}
+
+.cart:hover {
+    background-image: url("../img/cart_hover.png");
+}
+
+.search {
+    background-image: url("../img/search.png");
+}
+
+.search:hover {
+    background-image: url("../img/search_hover.png");
+}
+
+.main-block {
+    background: radial-gradient(#FDCDE1 0%, rgba(253, 207, 227, 0.9) 59.9%, #FEEEF5 100%);
+    height: 720px;
+}
+
+.main-container {
+    padding-top: 221px;
+    padding-left: 140px;
+    padding-right: 8px;
+    width: 592px;
+    line-height: 29px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 29px;
+}
+
+.main-container__title {
+    font-weight: 629;
+    font-size: 45;
+}
+
+.page-button {
+    width: 280px;
+    height: 60px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: none;
+    color: #F6F1F8;
+    background: radial-gradient(#8A73C5 0%, #A797D0 67.24%, #C4BBDB 100%)
+}
+
+.page-button:hover {
+    color: #515050;
+    background: #FFDDDB;
+}
+
+.bottle-image {
+    position: absolute;
+    right: 0px;
+    top: 100px;
+    background-image: url("../img/main_bottle.jpg");
+    background-repeat: no-repeat;
+    background-position: right top;
+    height: 720px;
+    width: 666px;
+    background-size: 90% 100%;
+}
+
+.about-block {
+    display : flex;
+    justify-content: center;
+    align-items : center;
+    height: 482px;
+}
+
+.brand-container {
+    margin-top: 89px;
+    margin-left: 183px;
+}
+
+.bottom-flower {
+    position: relative;
+    bottom: 72px;
+    right: 0px;
+}
+
+.upper-flower {
+    position: relative;
+    top: 72px;
+    left: 296px;
+}
+
+.brand-container__logo {
+    padding-left: 94px;
+    padding-top: 50px;
+    width: 440px;
+    height: 170px;
+    font-weight: 422;
+    font-size: 45px;
+    background: radial-gradient(#FDB8D5 0%, rgba(253, 184, 213, 0.9) 59.9%, #FEEEF5 100%)
+}
+
+.brand-text {
+    margin-top: 149px;
+    margin-left: 77px;
+    margin-bottom: 102px;
+    width: 278px;
+    height: 337px;
+}
+
+.brand-text__title {
+    font-size: 30px;
+    font-weight: 422;
+    color: #6C6867;
+    margin-bottom: 38px;
+}
+
+.brand-text__text {
+    font-size: 20px;
+    color: #6C6867;
+}
+
+.flowers-block {
+    background-color: #FEB7D5;
+    padding-top: 17px;
+    padding-bottom: 17px;
+}
+
+.flowers-row {
+    height: 30px;
+    background-image: url(../img/flowers.png);
+}
+
+.pt-104-pl-140 {
+    padding-top: 104px;
+    padding-left: 140px;
+}
+
+.new-product__info {
+    width: 280px;
+}
+
+.typical-header {
+    font-size: 30px;
+    font-weight: 629;
+    margin-bottom: 52px;
+}
+
+.new-product__desc {
+    height: 212px;
+    padding-top: 23px;
+    padding-left: 37px;
+    background: radial-gradient(#FDCDE1 0%, rgba(253, 207, 227, 0.9) 59.9%, #FEEEF5 100%);
+}
+
+.prod_name {
+    margin-bottom: 10px;
+}
+
+.prod_pros {
+    margin-bottom: 8px;
+}
+
+.more-button {
+    margin-top: -26px;
+    margin-left: 46.665px;
+    font-size: 12px;
+    width: 186.67px;
+    height: 46px;
+}
+
+.feedback-item {
+    height: 188px;
+    width: 400px;
+}
+
+.feedback__text {
+    margin-top: 57px;
+    padding-top: 38px;
+    padding-left: 40px;
+    padding-right: 46px;
+    padding-bottom: 26px;
+    
+    background: radial-gradient(#FDCDE1 0%, rgba(253, 207, 227, 0.9) 59.9%, #FEEEF5 100%);
+}
+
+.feedback-photo {
+    width: 88px;
+    height: 88px;
+    margin-top: -212px;
+    margin-left: 40px;
+}
+
+.owl-theme .owl-nav {
+    position: absolute;
+    margin-top: -342px;
+    margin-left: 840px;
+}
+
+.footer {
+    height: 290px;
+    background-color: #EDE9F8;
+}
+
+.footer-center {
+    margin-top: 130px;
+    margin-bottom: 130px;
+}
+
+.flex-cont {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px
+}
+
+.tel {
+    color: #6C6867;
+    margin: 0;
+    font-size: 20px;
+}
+
+.flex-cont button {
+    margin: 0;
+}

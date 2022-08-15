@@ -1,0 +1,290 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+* {
+    color: #515050;
+}
+
+button {
+    padding: 0;
+    display: block;
+    border-style: none;
+    font-weight: 400;
+    font-size: 20px;
+    color: #6C6867;
+    background: transparent;
+    background-repeat: no-repeat;
+}
+
+button:hover {
+    color: #8A73C5;
+}
+
+.s1 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.s2 {
+    font-size: 14px;
+    font-weight: regular;
+}
+
+.s3 {
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+.logo {
+    margin-top: 33px;
+    margin-bottom: 37px;
+    width: 143px;
+    height: 30px;
+    background-image: url("../img/logo.png");
+}
+
+.main_menu {
+    margin-top: 32px;
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
+
+.main_menu li button {
+    text-align: left;
+}
+
+.main_menu ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+}
+
+/* отображаем выпадающий список при наведении */
+.main_menu li:hover > ul {
+    width: 141px;
+    border: 1px solid #8A73C5;
+    background-color: #FFFFFF;
+    padding-top: 31px;
+    padding-left: 25px;
+    padding-bottom: 41px;
+    display: flex;
+    flex-direction: column;
+    gap: 29px;
+}
+
+/* первый уровень выпадающего списка */
+.main_menu li {
+    list-style: none;
+    position: relative;
+}
+
+.buttons_menu {
+    margin-top: 36.5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons_menu button {
+    height: 23px;
+    width: 23px;
+}
+
+.favourite {
+    background-image: url("../img/favourite.png");
+}
+
+.favourite:hover {
+    background-image: url("../img/favourite_hover.png");
+}
+
+.cart {
+    background-image: url("../img/cart.png");
+}
+
+.cart:hover {
+    background-image: url("../img/cart_hover.png");
+}
+
+.search {
+    background-image: url("../img/search.png");
+}
+
+.search:hover {
+    background-image: url("../img/search_hover.png");
+}
+
+.main-block {
+    height: 980px;
+    background-color: #FFFFFF;
+}
+
+.upper-section {
+    padding-top: 50px;
+    margin-bottom: 30px;
+}
+
+.catalog__title {
+    font-weight: 629;
+    font-size: 45;
+}
+
+.categories {
+    margin-bottom: 40px;
+}
+
+.sort {
+    height: 30px;
+    border: 1px solid #515050;
+    font-size: 20px;
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+#type-of-product {
+    width: 187px;
+}
+
+#function {
+    margin-left: 0px;
+    width: 174px;
+}
+
+#skin-type {
+    margin-left: 0px;
+    width: 144px;
+}
+
+#sorting {
+    margin-left: 0px;
+    width: 171px;
+}
+
+.product-section {
+    width: 200px;
+    height: 290px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.products {
+    margin-bottom: 30px;
+}
+
+.main-block .col-md-3 {
+    display: flex;
+    justify-content: center;
+}
+
+.product-section p {
+    margin-bottom: 0;
+    height: 15px;
+}
+
+.product-section .s2 {
+    color: #000000;
+}
+
+.set-like {
+    height: 23px;
+    width: 23px;
+    position: absolute;
+    margin-top: -28px;
+    margin-left: 169px;
+}
+
+.product-preview {
+    height: 240px;
+    width: 200px;
+    background-repeat: no-repeat;
+}
+
+#p1_1 {
+    background-image: url("../img/1_1.png");
+}
+
+#p1_2 {
+    background-image: url("../img/1_2.png");
+}
+
+#p1_3 {
+    background-image: url("../img/1_3.png");
+}
+
+#p1_4 {
+    background-image: url("../img/1_4.png");
+}
+
+#p2_1 {
+    background-image: url("../img/2_1.png");
+}
+
+#p2_2 {
+    background-image: url("../img/2_2.png");
+}
+
+#p2_3 {
+    background-image: url("../img/2_3.png");
+}
+
+#p2_4 {
+    background-image: url("../img/2_4.png");
+}
+
+#show-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.page-button {
+    width: 280px;
+    height: 40px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: none;
+    color: #F6F1F8;
+    background: #8A73C5
+}
+
+.page-button:hover {
+    color: #515050;
+    background: #FFDDDB;
+}
+
+
+
+
+
+.footer {
+    height: 290px;
+    background-color: #EDE9F8;
+}
+
+.footer-center {
+    margin-top: 130px;
+    margin-bottom: 130px;
+}
+
+.flex-cont {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px
+}
+
+.tel {
+    color: #6C6867;
+    margin: 0;
+    font-size: 20px;
+}
+
+.flex-cont button {
+    margin: 0;
+}
