@@ -6,7 +6,7 @@ body {
     color: #515050;
 }
 
-button {
+a {
     padding: 0;
     display: block;
     border-style: none;
@@ -15,9 +15,10 @@ button {
     color: #6C6867;
     background: transparent;
     background-repeat: no-repeat;
+    text-decoration: none;
 }
 
-button:hover {
+a:hover {
     color: #8A73C5;
 }
 
@@ -51,7 +52,7 @@ button:hover {
     justify-content: space-around;
 }
 
-.main_menu li button {
+.main_menu li a {
     text-align: left;
 }
 
@@ -86,7 +87,7 @@ button:hover {
     justify-content: space-around;
 }
 
-.buttons_menu button {
+.buttons_menu a {
     height: 23px;
     width: 23px;
 }
@@ -188,6 +189,10 @@ button:hover {
     color: #000000;
 }
 
+.product-section .s2:hover {
+    color: #8A73C5;
+}
+
 .set-like {
     height: 23px;
     width: 23px;
@@ -248,6 +253,9 @@ button:hover {
     font-weight: bold;
     text-transform: uppercase;
     text-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #F6F1F8;
     background: #8A73C5
 }
@@ -256,10 +264,6 @@ button:hover {
     color: #515050;
     background: #FFDDDB;
 }
-
-
-
-
 
 .footer {
     height: 290px;
@@ -285,6 +289,6 @@ button:hover {
     font-size: 20px;
 }
 
-.flex-cont button {
+.flex-cont a {
     margin: 0;
 }
