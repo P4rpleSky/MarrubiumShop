@@ -17,7 +17,7 @@ app.UseStaticFiles();
 
 app.MapControllerRoute(
     name: "products_catalog",
-    pattern: "catalog",
+    pattern: "catalog/{id?}",
     defaults: new { controller = "Catalog", action = "Main" });
 
 app.MapControllerRoute(

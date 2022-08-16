@@ -9,7 +9,6 @@
 
 getProducts()
 
-// создание одного виджета с продуктом
 function get_product_section(product) {
     
     const product_section = document.createElement("div");
@@ -30,6 +29,13 @@ function get_product_section(product) {
     const like_button = document.createElement("a");
     like_button.className += "set-like";
     like_button.className += " favourite"
+    like_button.addEventListener("click", e => {
+        e.preventDefault();
+        if (like_button.style.backgroundImage == 'url("../img/favourite_click.png")')
+            like_button.style.backgroundImage = "";
+        else
+            like_button.style.backgroundImage = 'url("../img/favourite_click.png")';
+    })
     visual.appendChild(like_button);
 
     const name = document.createElement("a");
@@ -46,7 +52,6 @@ function get_product_section(product) {
     return product_section;
 }
 
-// создание строки для каталога
 function row(product_sections) {
 
     const row = document.createElement("div");
