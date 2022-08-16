@@ -1,3 +1,5 @@
+using System;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
@@ -12,7 +14,11 @@ app.UseAuthentication();
 app.UseAuthorization();  
 
 app.UseStaticFiles();
-//app.UseStatusCodePages("text/plain", "Error: Resource Not Found. Status code: {0}");
+
+app.MapControllerRoute(
+    name: "products_catalog",
+    pattern: "catalog",
+    defaults: new { controller = "Catalog", action = "Main" });
 
 app.MapControllerRoute(
     name: "default",
