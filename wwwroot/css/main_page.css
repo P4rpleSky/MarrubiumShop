@@ -20,26 +20,6 @@
     font-size: 45;
 }
 
-.page-button {
-    width: 280px;
-    height: 60px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-shadow: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #F6F1F8;
-    background: radial-gradient(#8A73C5 0%, #A797D0 67.24%, #C4BBDB 100%)
-}
-
-.page-button:hover {
-    color: #515050;
-    background: #FFDDDB;
-}
-
 .bottle-image {
     position: absolute;
     right: 0px;

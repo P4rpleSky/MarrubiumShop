@@ -1,5 +1,4 @@
 .main-block {
-    height: 980px;
     background-color: #FFFFFF;
 }
 
@@ -125,24 +124,11 @@
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .page-button {
-    width: 280px;
     height: 40px;
-    font-family: 'Josefin Sans', sans-serif;
     font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-shadow: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #F6F1F8;
     background: #8A73C5
-}
-
-.page-button:hover {
-    color: #515050;
-    background: #FFDDDB;
 }

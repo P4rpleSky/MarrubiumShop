@@ -93,6 +93,14 @@ a:hover {
     width: 23px;
 }
 
+.profile {
+    background-image: url("../img/profile.png");
+}
+
+.profile:hover {
+    background-image: url("../img/profile_hover.png");
+}
+
 .favourite {
     background-image: url("../img/favourite.png");
 }
@@ -115,6 +123,26 @@ a:hover {
 
 .search:hover {
     background-image: url("../img/search_hover.png");
+}
+
+.page-button {
+    width: 280px;
+    height: 60px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F6F1F8;
+    background: radial-gradient(#8A73C5 0%, #A797D0 67.24%, #C4BBDB 100%)
+}
+
+.page-button:hover {
+    color: #515050;
+    background: #FFDDDB;
 }
 
 .footer {

@@ -11,36 +11,7 @@
 </head>
 <body>
     <header class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2">
-                    <a class="logo" href="https://localhost:7199/"></a>
-                </div>
-                <div class="col-md-8">
-                    <ui class="main_menu">
-                        <li><a class="s1" href="https://localhost:7199/about">О нас</a></li>
-                        <li>
-                            <a class="s1" href="https://localhost:7199/catalog">Каталог</a>
-                            <ul>
-                                <li><a class="s2" href="https://localhost:7199/catalog">Крема</a></li>
-                                <li><a class="s2" href="https://localhost:7199/catalog">Сыворотки</a></li>
-                                <li><a class="s2" href="https://localhost:7199/catalog">Очищающие средства</a></li>
-                                <li><a class="s2" href="https://localhost:7199/catalog">Маски</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="s1" href="https://localhost:7199/delivery">Доставка</a></li>
-                        <li><a class="s1" href="https://localhost:7199/contacts">Контакты</a></li>
-                    </ui>
-                </div>
-                <div class="col-md-2">
-                    <div class="buttons_menu">
-                        <a class="favourite" href="https://localhost:7199/my/favourite"></a>
-                        <a class="cart" href="https://localhost:7199/my/cart"></a>
-                        <a class="search" href="#"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <script src="/js/view_getters/show_header.js"></script>
     </header>
     <div class="main-block">
         <div class="container">
@@ -84,35 +55,13 @@
                     </select>
                 </div>
             </div>
+            <script src="/js/view_getters/show_products.js"></script>
         </div>
     </div>
     <div class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <img src="img/logo.png" alt="Marrubium" class="footer-center">
-                </div>
-                <div class="offset-md-1 col-md-2">
-                    <div class="footer-menu-1 flex-cont">
-                        <a href="https://localhost:7199/about">О нас</a>
-                        <a href="https://localhost:7199/catalog">Каталог</a>
-                        <a href="https://localhost:7199/contacts">Контакты</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="footer-menu-2 flex-cont">
-                        <a href="https://localhost:7199/delivery">Доставка</a>
-                        <a href="mailto:aliev.af@edu.spbstu.ru">Напишите нам</a>
-                    </div>
-                </div>
-                <div class="col-md-3 ">
-                    <div class="tel-number footer-center">
-                        <p class="tel">+7(999)999-99-99</p>
-                    </div>
-                </div>
-            </div>
+            <script src="/js/view_getters/show_footer.js"></script>
         </div>
     </div>
-    <script src="/js/view_getters/get_products.js"></script>
 </body>
 </html>
