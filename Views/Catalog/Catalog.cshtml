@@ -11,7 +11,7 @@
 </head>
 <body>
     <header class="header">
-        <script src="../HtmlHelpers/show_header.js"></script>
+        <script src="/js/view_getters/show_header.js"></script>
     </header>
     <div class="main-block">
         <div class="container">
@@ -24,6 +24,7 @@
                 <div class="col-md-3">
                     <select id="type-of-product" name="type-of-product" class="sort">
                         <option disabled selected>Тип продукта</option>
+                        <option value="all">Все</option>
                         <option value="lotion">Крема</option>
                         <option value="serum">Сыворотки</option>
                         <option value="сleaning">Очищающие средства</option>
@@ -33,6 +34,7 @@
                 <div class="col-md-3">
                     <select id="function" name="function" class="sort">
                         <option disabled selected>По функции</option>
+                        <option value="all">Все</option>
                         <option value="rejuvenating">Омолаживающая</option>
                         <option value="restoring">Восстанавливающая</option>
                     </select>
@@ -40,6 +42,7 @@
                 <div class="col-md-3">
                     <select id="skin-type" name="skin-type" class="sort">
                         <option disabled selected>Тип кожи</option>
+                        <option value="all">Все</option>
                         <option value="soft">Нежная</option>
                         <option value="sensitive">Чувствительная</option>
                         <option value="rough">Грубая</option>
@@ -48,6 +51,7 @@
                 <div class="col-md-3">
                     <select id="sorting" name="sorting" class="sort">
                         <option disabled selected>Сортировка</option>
+                        <option value="default">По умолчанию</option>
                         <option value="decs-price">По возрастанию цены</option>
                         <option value="acs-price">По убыванию цены</option>
                         <option value="most-popular">Самые популярные</option>
@@ -55,12 +59,12 @@
                     </select>
                 </div>
             </div>
-            <script src="../HtmlHelpers/show_products.js"></script>
+            <script src="/js/view_getters/show_products.js"></script>
         </div>
     </div>
     <div class="footer">
         <div class="container">
-            <script src="../HtmlHelpers/show_footer.js"></script>
+            <script src="/js/view_getters/show_footer.js"></script>
         </div>
     </div>
 </body>

@@ -49,7 +49,8 @@ function get_product_section(product) {
     const image_url = `../img/products/${product.ImageName}.png`;
     const product_page_url = `https://localhost:7199/catalog/${product.ProductId}`;
     product_preview.className += `product-preview`;
-    product_preview.setAttribute("style", `background-image:url("${image_url}")`);
+    product_preview.setAttribute("style",
+        `background-image:url("${image_url}");background-position:top center;background-size:cover`);
     product_preview.setAttribute("href", product_page_url);
     visual.appendChild(product_preview);
 
@@ -111,6 +112,10 @@ function more_button_row() {
     const button = document.createElement("a");
     button.className += "page-button";
     button.append("Показать ещё");
+    button.addEventListener("click", e => {
+        e.preventDefault();
+        show_products()
+    });
     show_more.appendChild(button);
 
     return row;
@@ -125,14 +130,31 @@ async function show_products() {
         const products = await response.json();
         const rows = document.querySelector("div.main-block div.container");
         let product_sections = [];
-        for (let i = 0; i < 8; i++) {
-            product_sections.push(get_product_section(products[i]))
-            if (product_sections.length % 4 === 0) {
-                rows.append(row(product_sections))
-                product_sections = []
+        if (document.getElementsByClassName('products').length === 0) {
+            for (let i = 0; i < 8; i++) {
+                product_sections.push(get_product_section(products[i]))
+                if (product_sections.length % 4 === 0) {
+                    rows.append(row(product_sections));
+                    product_sections = [];
+                }
+            }
+            if (products.length > 8)
+                rows.append(more_button_row());
+        }
+        else {
+            let buttons = document.getElementsByClassName('page-button');
+            buttons[0].parentNode.parentNode.removeChild(buttons[0].parentNode);
+            for (let i = 8; i < products.length; i++) {
+                product_sections.push(get_product_section(products[i]));
+                if (product_sections.length % 4 === 0) {
+                    rows.append(row(product_sections));
+                    product_sections = [];
+                }
             }
         }
-        /*if (products > 8)*/
-        rows.append(more_button_row())
+        if (product_sections.length != 0) {
+            rows.append(row(product_sections));
+            product_sections = [];
+        } 
     }
 }

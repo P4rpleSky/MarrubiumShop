@@ -9,9 +9,6 @@
   <ItemGroup>
     <Content Include="Database\Entitites\Customer.cs" />
     <Content Include="Database\marrubiumContext.cs" />
-    <Content Include="HtmlHelpers\show_footer.js" />
-    <Content Include="HtmlHelpers\show_header.js" />
-    <Content Include="HtmlHelpers\show_products.js" />
   </ItemGroup>
 
   <ItemGroup>
