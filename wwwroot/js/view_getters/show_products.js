@@ -49,8 +49,7 @@ function get_product_section(product) {
     const image_url = `../img/products/${product.ImageName}.png`;
     const product_page_url = `https://localhost:7199/catalog/${product.ProductId}`;
     product_preview.className += `product-preview`;
-    product_preview.setAttribute("style",
-        `background-image:url("${image_url}");background-position:top center;background-size:cover`);
+    product_preview.setAttribute("style", `background-image:url("${image_url}")`);
     product_preview.setAttribute("href", product_page_url);
     visual.appendChild(product_preview);
 

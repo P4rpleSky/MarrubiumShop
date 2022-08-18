@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="~/css/default.css" />
     <link rel="stylesheet" type="text/css" href="~/css/main_page.css"/>
+    <link rel="stylesheet" type="text/css" href="~/css/popup.css">
     <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="~/css/owl.carousel.min.css"/>
     <link rel="stylesheet" type="text/css" href="~/css/owl.theme.default.css"/>
@@ -71,7 +72,7 @@
     <div class="flowers-block">
         <div class="flowers-row"></div>
     </div>
-    <div class="new-products-block">
+    <div id="catalog" class="new-products-block">
         <div class="container">
             <div class="new-products pt-104-pl-140">
                 <h2 class="typical-header">Новинки этого месяца</h2>
@@ -89,7 +90,23 @@
                                     <li class="prod_pros s2">Сужает поры</li>
                                 </ul>
                             </div>
-                            <a class="page-button more-button">
+                            <div id="info1">
+                                <div class="pop-up">
+                                    <div class="popup-img" style="background-image: url('../img/popup1.png')"></div>
+                                    <h3>Крем с ретинолом</h3>
+                                    <div class="s1 pr-text">
+                                        Ретинол помогает отшелушивать роговой слой кожи, смягчает ее,
+                                        обновляет клетки эпидермиса, осветляет, корректирует даже
+                                        глубокие морщины, сокращает выработку себума, сужает поры,
+                                        борется с угревой сыпью
+                                    </div>
+                                    <div class="s1 pr-text">
+                                        Цена: 1000
+                                    </div>
+                                    <a href="#catalog" class="close"></a>
+                                </div>
+                            </div>
+                            <a class="page-button more-button" href="#info1">
                                 Подробнее
                             </a>
                         </div>
@@ -107,7 +124,20 @@
                                     <li class="prod_pros s2">Противовосполительное действие</li>
                                 </ul>
                             </div>
-                            <a class="page-button more-button">
+                            <div id="info2">
+                                <div class="pop-up">
+                                    <div class="popup-img" style="background-image: url('../img/wtf.png')"></div>
+                                    <h3>Лосьон с центеллой</h3>
+                                    <div class="s1 pr-text">
+                                        Шашлындос, шашлындос
+                                    </div>
+                                    <div class="s1 pr-text">
+                                        Цена: бесценно
+                                    </div>
+                                    <a href="#catalog" class="close"></a>
+                                </div>
+                            </div>
+                            <a class="page-button more-button" href="#info2">
                                 Подробнее
                             </a>
                         </div>
@@ -125,7 +155,20 @@
                                     <li class="prod_pros s2">Защита от фотостарения</li>
                                 </ul>
                             </div>
-                            <a class="page-button more-button">
+                            <div id="info3">
+                                <div class="pop-up">
+                                    <div class="popup-img" style="background-image: url('../img/wtf.png')"></div>
+                                    <h3>Серум с чаем</h3>
+                                    <div class="s1 pr-text">
+                                        А я и не знал, что химические элементы с чаем используют, как косметос
+                                    </div>
+                                    <div class="s1 pr-text">
+                                        Цена: бесценно
+                                    </div>
+                                    <a href="#catalog" class="close"></a>
+                                </div>
+                            </div>
+                            <a class="page-button more-button" href="#info3">
                                 Подробнее
                             </a>
                         </div>
