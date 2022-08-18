@@ -1,7 +1,6 @@
-using System;
-
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSingleton<MarrubiumShop.Database.IDatabaseService, MarrubiumShop.Database.DatabaseService>();
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddAuthentication("Bearer")
