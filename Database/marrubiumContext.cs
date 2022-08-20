@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using MarrubiumShop.Database.Entitites;
+﻿using MarrubiumShop.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace MarrubiumShop.Database
 {

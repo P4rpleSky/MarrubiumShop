@@ -1,13 +1,4 @@
-﻿//<div class="product-section">
-//        <div class="visual">
-//            <a id="p1_1" href="#" class="product-preview"></a>
-//            <a class="set-like favourite"></a>
-//        </div>
-//        <a class="s2" href="#">Крем с ретинолом</a>
-//        <p class="s3">1000 р</p>
-//</div>
-
-function get_product_section(product) {
+﻿function get_product_section(product) {
 
     const product_section = document.createElement("div");
     product_section.className += "product-section";
@@ -72,6 +63,7 @@ function more_button_row() {
 
     const row = document.createElement("div");
     row.className += "row";
+    row.className += " more";
 
     const show_more = document.createElement("div");
     show_more.setAttribute("id", "show-more");
@@ -92,16 +84,41 @@ function more_button_row() {
 }
 
 async function show_products() {
+
+    let select = document.getElementById('type-of-product');
+    let productType = select.options[select.selectedIndex].value;
+
+    select = document.getElementById('function');
+    let func = select.options[select.selectedIndex].value;
+
+    select = document.getElementById('skin-type');
+    let skinType = select.options[select.selectedIndex].value;
+
+    select = document.getElementById('sorting');
+    let order = select.options[select.selectedIndex].value;
+
     const response = await fetch("/catalog.json", {
-        method: "GET",
-        headers: { "Accept": "application/json" }
+        body: JSON.stringify({
+            Type: productType,
+            Function: func,
+            SkinType: skinType,
+            Order: order
+        }),
+        method: "POST",
+        headers: { "Accept": "application/json", "Content-Type": "application/json" }
     });
     if (response.ok === true) {
+        const rows = document.getElementById("product-block");
         const products = await response.json();
-        const rows = document.querySelector("div.main-block div.container");
+        if (products.length === 0) {
+            const response_text = document.createElement("h3");
+            response_text.append("Товаров по данному запросу не найдено, попробуйте изменить фильтры");
+            rows.append(response_text);
+            return;
+        }
         let product_sections = [];
         if (document.getElementsByClassName('products').length === 0) {
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < Math.min(products.length, 8); i++) {
                 product_sections.push(get_product_section(products[i]))
                 if (product_sections.length % 4 === 0) {
                     rows.append(row(product_sections));
@@ -130,4 +147,4 @@ async function show_products() {
 }
 
 show_products();
-export { row, get_product_section };
+export { row, get_product_section, show_products };

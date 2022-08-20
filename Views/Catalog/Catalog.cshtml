@@ -27,7 +27,7 @@
                         <option value="all">Все</option>
                         <option value="lotion">Крема</option>
                         <option value="serum">Сыворотки</option>
-                        <option value="сleaning">Очищающие средства</option>
+                        <option value="cleaning">Очищающие средства</option>
                         <option value="mask">Маски</option>
                     </select>
                 </div>
@@ -52,13 +52,15 @@
                     <select id="sorting" name="sorting" class="sort">
                         <option disabled selected>Сортировка</option>
                         <option value="default">По умолчанию</option>
-                        <option value="decs-price">По возрастанию цены</option>
-                        <option value="acs-price">По убыванию цены</option>
+                        <option value="decs-price">По убыванию цены</option>
+                        <option value="acs-price">По возрастанию</option>
                         <option value="most-popular">Самые популярные</option>
                         <option value="best-rate">Лучшая оценка</option>
                     </select>
                 </div>
             </div>
+        </div>
+        <div class="container" id="product-block">
             <script type="module" src="/js/view_getters/show_products.js"></script>
         </div>
     </div>
@@ -67,5 +69,6 @@
             <script src="/js/view_getters/show_footer.js"></script>
         </div>
     </div>
+    <script type="module" src="/js/view_getters/onchange_select.js"></script>
 </body>
 </html>

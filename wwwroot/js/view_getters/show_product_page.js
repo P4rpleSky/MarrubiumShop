@@ -1,26 +1,4 @@
-﻿//<div class="container">
-//    <div class="row">
-//        <div class="col-md-5">
-//            <img class="photo" src="img/1_4.png">
-//        </div>
-//        <div class="col-md-6">
-//            <h2 id="name">Сыворотка с полынью</h2>
-//            <h3 id="price">1600 р</h3>
-//            <h3>Описание</h3>
-//            <div class="s1">Тип продукта: сыворотка</div>
-//            <div class="s1">По функции: увлажняющее</div>
-//            <div class="s1">Тип кожи: сухая</div>
-//            <div class="amount-multibutton">
-//                <a id="minus"></a>
-//                <a id="amount">1</a>
-//                <a id="plus"></a>
-//            </div>
-//            <a class="page-button">Добавить в корзину</a>
-//        </div>
-//    </div>
-//</div>
-
-import { row, get_product_section } from "../view_getters/show_products.js"
+﻿import { row, get_product_section } from "../view_getters/show_products.js"
 
 show_product_page();
 
@@ -86,7 +64,6 @@ async function show_product_page() {
                     break;
             }
         });
-        
 
         product_section.innerHTML = `
         <div class="row">
@@ -112,6 +89,7 @@ async function show_product_page() {
             </div>
         </div>
         <h3 id="recommended">Рекомендации</h3>`;
+
         let product_sections = [];
         for (let i = 1; i < products.length; i++)
             product_sections.push(get_product_section(products[i]));

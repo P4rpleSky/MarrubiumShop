@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MarrubiumShop.Database.Entitites
+namespace MarrubiumShop.Models
 {
-    public partial class CustomerCart
+    public partial class CustomerFavourite
     {
         public int? CustomerId { get; set; }
         public int? ProductId { get; set; }

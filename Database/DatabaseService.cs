@@ -1,11 +1,11 @@
-﻿using MarrubiumShop.Database.Entitites;
+﻿using MarrubiumShop.Models;
 using System.Collections.Immutable;
 
 namespace MarrubiumShop.Database
 {
     public class DatabaseService : IDatabaseService
     {
-        public readonly IReadOnlyList<Product> products;
+        public readonly IReadOnlyCollection<Product> products;
         public readonly System.Text.Json.JsonSerializerOptions jsonOptions;
 
         public DatabaseService()

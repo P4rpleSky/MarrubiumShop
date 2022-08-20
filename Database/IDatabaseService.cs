@@ -1,5 +1,4 @@
-﻿using MarrubiumShop.Database.Entitites;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace MarrubiumShop.Database
 {

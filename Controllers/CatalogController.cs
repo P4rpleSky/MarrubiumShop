@@ -1,5 +1,5 @@
 ﻿using MarrubiumShop.Database;
-using MarrubiumShop.Database.Entitites;
+using MarrubiumShop.Models;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -19,10 +19,41 @@ namespace MarrubiumShop.Controllers
             return View("Catalog");
         }
 
-        [HttpGet("catalog.json")]
-        public IActionResult GetAllProductsJson()
+        [HttpPost("catalog.json")]
+        public async Task<IActionResult> GetAllProductsJson()
         {
-            return Json(_databaseService.products, _databaseService.jsonOptions);
+            var sort = await Request.ReadFromJsonAsync<SortClass>();
+            IEnumerable<Product> products = _databaseService.products;
+
+            if (sort.Type != "Тип продукта" && sort.Type != "all")
+                products = products.Where(p => p.Type.Any(t => string.Equals(t, sort.Type, StringComparison.OrdinalIgnoreCase)));
+
+            if (sort.Function != "По функции" && sort.Function != "all")
+                products = products.Where(p => p.Function.Any(f => string.Equals(f, sort.Function, StringComparison.OrdinalIgnoreCase)));
+            
+            if (sort.SkinType != "Тип кожи" && sort.SkinType != "all")
+                products = products.Where(p => p.SkinType.Any(s => string.Equals(s, sort.SkinType, StringComparison.OrdinalIgnoreCase)));
+            
+            if (sort.Order != "Сортировка" && sort.Order != "default")
+            {
+                switch (sort.Order)
+                {
+                    case "decs-price":
+                        products = products.OrderByDescending(p => p.ProductPrice);
+                        break;
+                    case "acs-price":
+                        products = products.OrderBy(p => p.ProductPrice);
+                        break;
+                    case "most-popular":
+                        // To be impemented
+                        break;
+                    case "best-rate":
+                        // To be impemented
+                        break;   
+                }
+            }
+                
+            return Json(products, _databaseService.jsonOptions);
         }
 
         [Route("catalog/{id:int}")]

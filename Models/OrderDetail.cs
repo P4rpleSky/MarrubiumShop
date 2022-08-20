@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MarrubiumShop.Database.Entitites
+namespace MarrubiumShop.Models
 {
     public partial class OrderDetail
     {
