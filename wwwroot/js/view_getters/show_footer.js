@@ -17,7 +17,7 @@ function show_footer() {
     footer.innerHTML = `
     <div class="row">
         <div class="col-md-3">
-            <img src="img/logo.png" alt="Marrubium" class="footer-center">
+            <img src="/img/logo.png" alt="Marrubium" class="footer-center">
         </div>
         <div class="offset-md-1 col-md-2">
             <div class="footer-menu-1 flex-cont">

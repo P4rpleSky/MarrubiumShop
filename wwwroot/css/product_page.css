@@ -6,9 +6,8 @@
 }
 
 .photo {
-    height: 460px;
+    height: 100%;
     width: 360px;
-    width: 100%;
 }
 
 h3 {
@@ -29,20 +28,21 @@ h2 {
 }
 
 .buttons-row {
+    display: flex;
+    justify-content: flex-start;
+    gap: 50px;
     height: 60px;
-
     margin-top: 30px;
     margin-bottom: 40px;
 }
 
 .amount-multibutton {
     height: 60px;
-    margin-top: 30px;
-    margin-bottom: 40px;
     display: flex;
     justify-content: space-around;
     width: 125px;
     background-color: #FDB8D5;
+    border: 1px solid #403C38;
 }
 
 .amount-multibutton a {
@@ -63,4 +63,55 @@ h2 {
 
 #plus {
     background-image: url("../img/plus.png");
+}
+
+#recommended {
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+#big-set-like {
+    width: 69px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    background-image: url("../img/big_favourite.png")
+}
+
+#big-set-like:hover {
+    background-image: url("../img/big_favourite_hover.png")
+}
+
+.products {
+    margin-bottom: 30px;
+}
+
+.product-section p {
+    margin-bottom: 0;
+    height: 15px;
+}
+
+.product-section .s2 {
+    color: #000000;
+}
+
+.product-section .s2:hover {
+    color: #8A73C5;
+}
+
+.set-like {
+    height: 23px;
+    width: 23px;
+    position: absolute;
+    margin-top: -28px;
+    margin-left: 169px;
+}
+
+.product-preview {
+    height: 240px;
+    width: 200px;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
 }

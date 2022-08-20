@@ -7,36 +7,7 @@
 //        <p class="s3">1000 р</p>
 //</div>
 
-show_products()
-
 function get_product_section(product) {
-
-    //const product_section = document.createElement("div");
-    //product_section.className += "product-section";
-
-    //const image_url = `../img/products/${product.ImageName}.png`;
-    //const product_page_url = `https://localhost:7199/catalog/${product.ProductId}`;
-
-    //product_section.innerHTML = `
-    //<div class="product-section">
-    //    <div class="visual">
-    //        <a href="${product_page_url}" id="${product.ProductId}" "class="product-preview"></a>
-    //        <a class="set-like favourite"></a>
-    //    </div>
-    //    <a class="s2" href="${product_page_url}" id="like">${product.ProductName}</a>
-    //    <p class="s3">${product.ProductPrice} р</p>
-    //</div>`;
-    //const a = product_section.innerHTML.getElementById(product.ProductId)
-    //document.getElementById(product.ProductId.toString()).style.backgroundImage = `url("${image_url}")`
-    //document.getElementById("like").addEventListener("click", e => {
-    //    e.preventDefault();
-    //    if (like_button.style.backgroundImage == 'url("../img/favourite_click.png")')
-    //        like_button.style.backgroundImage = "";
-    //    else
-    //        like_button.style.backgroundImage = 'url("../img/favourite_click.png")';
-    //})
-
-    //return product_section;
 
     const product_section = document.createElement("div");
     product_section.className += "product-section";
@@ -157,3 +128,6 @@ async function show_products() {
         } 
     }
 }
+
+show_products();
+export { row, get_product_section };

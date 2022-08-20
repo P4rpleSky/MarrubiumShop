@@ -37,9 +37,20 @@ namespace MarrubiumShop.Controllers
         [HttpGet("catalog/{id}/product.json")]
         public IActionResult GetProductJson(int id)
         {
-            return Json(
-                _databaseService.products.FirstOrDefault(p => p.ProductId == id), 
-                _databaseService.jsonOptions);
+            var currentProduct = _databaseService.products.FirstOrDefault(p => p.ProductId == id);
+            if (currentProduct is null)
+                return NotFound();
+            List<Product> productAndRecommended = new List<Product>();
+            var rand = new Random();
+            var recommended = _databaseService.products
+                .Where(p => (p.Function.Any(f => currentProduct.Function.Contains(f)) ||
+                             p.SkinType.Any(f => currentProduct.SkinType.Contains(f)))
+                             && p.ProductId != currentProduct.ProductId)
+                .OrderBy(x => rand.Next())
+                .Take(4);
+            productAndRecommended.Add(currentProduct);
+            productAndRecommended.AddRange(recommended);
+            return Json(productAndRecommended, _databaseService.jsonOptions);
         }
     }
 }
