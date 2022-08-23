@@ -1,9 +1,13 @@
 ﻿using MarrubiumShop.Database;
 using MarrubiumShop.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Security.Claims;
+using System;
 using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Authentication;
 
 namespace MarrubiumShop.Controllers
 {
@@ -29,7 +33,7 @@ namespace MarrubiumShop.Controllers
         }
 
         [HttpPost("reg_user_post")]
-        public async Task<IActionResult> RegistrateUser()
+        public async Task<IActionResult> Registrate()
         {
             var customer = await Request.ReadFromJsonAsync<Customer>();
             using (var db = new marrubiumContext())
@@ -46,6 +50,32 @@ namespace MarrubiumShop.Controllers
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 return Json(new { Result = "success" });
+            }
+        }
+
+        [HttpPost("login_user_post")]
+        public async Task<IActionResult> Login()
+        {
+            var customer = await Request.ReadFromJsonAsync<Customer>();
+            if (customer.CustomerEmail == "" || customer.CustomerPassword == "")
+                return Json(new { Error = "exception" });
+            using (var db = new marrubiumContext())
+            {
+                foreach (var c in db.Customers)
+                {
+                    if (c.CustomerEmail == customer.CustomerEmail || c.PhoneNumber == customer.PhoneNumber)
+                    {
+                        if (c.CustomerPassword != customer.CustomerPassword)
+                            return Json(new { Error = "user-password" });
+                        var claims = new List<Claim> { new Claim(ClaimTypes.Name, customer.CustomerEmail) };
+                        ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "Cookies");
+                        await HttpContext.SignInAsync(
+                            CookieAuthenticationDefaults.AuthenticationScheme,
+                            new ClaimsPrincipal(claimsIdentity));
+                        return Json(new { Result = "success" });
+                    }
+                }
+                return Json(new { Error = "tel-or-email" });
             }
         }
     }

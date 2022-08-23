@@ -19,13 +19,13 @@
             <form>
                 <p class="inp">
                     <label class="s1" for="tel-or-email">E-mail или телефон</label><br />
-                    <input required class="s1" type="text" placeholder="user@gmail.com"
-                           id="tel-or-email" />
+                    <input required class="s1" type="text" placeholder="(XXX)-XXX-XX-XX" id="tel-or-email" />
+                    <div id="tel-or-email-w" class="s3 warning">Неверный телефон или e-mail</div>
                 </p>
                 <p class="inp">
                     <label class="s1" for="user-password">Пароль</label><br />
-                    <input required class="s1" type="password"
-                           id="user-password" />
+                    <input required class="s1" type="password" id="user-password" />
+                    <div id="user-password-w" class="s3 warning">Неверный пароль</div>
                 </p>
                 <a href="https://localhost:7199/registration" class="s2">Создать аккаунт</a>
                 <input type="submit" class="page-button" value="Войти на сайт" />
@@ -35,5 +35,6 @@
     <div class="footer">
         <script src="/js/view_getters/show_footer.js"></script>
     </div>
+    <script src="/js/sign_up_in/sign_in.js"></script>
 </body>
 </html>
