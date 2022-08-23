@@ -1,0 +1,71 @@
+.main-block {
+    display: flex;
+    justify-content: space-around;
+}
+
+.sign-up, .sign-in {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 653px;
+    padding-top: 50px;
+}
+
+.inp {
+    margin-bottom: 30px;
+}
+
+form {
+    margin-top: 40px;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+input {
+    width: 240px;
+    height: 30px;
+    border: 0;
+    border-bottom: 1px solid #FDB8D5;
+}
+
+input:disabled {
+    background: dimgrey;
+}
+
+::placeholder {
+    color: #FDB8D5;
+}
+
+input:focus{
+    outline: none;
+}
+
+.policy {
+    height: 18px;
+}
+
+.policy input {
+    height: 15px;
+    width: 15px;
+}
+
+.policy a {
+    position: absolute;
+    margin-top: -16px;
+    margin-left: 26px;
+}
+
+.warning {
+    position: absolute;
+    color: red;
+    display: none;
+    margin-top: -30px;
+}
+
+.page-button {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}

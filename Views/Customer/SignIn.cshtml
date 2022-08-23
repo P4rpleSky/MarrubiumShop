@@ -1,0 +1,39 @@
+﻿<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/img/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;628&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/css/default.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/sign_up_in.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css" />
+</head>
+<body>
+    <header class="header">
+        <script src="/js/view_getters/show_header.js"></script>
+    </header>
+    <div class="main-block">
+        <div class="sign-in">
+            <h2>Авторизация</h2>
+            <form>
+                <p class="inp">
+                    <label class="s1" for="tel-or-email">E-mail или телефон</label><br />
+                    <input required class="s1" type="text" placeholder="user@gmail.com"
+                           id="tel-or-email" />
+                </p>
+                <p class="inp">
+                    <label class="s1" for="user-password">Пароль</label><br />
+                    <input required class="s1" type="password"
+                           id="user-password" />
+                </p>
+                <a href="https://localhost:7199/registration" class="s2">Создать аккаунт</a>
+                <input type="submit" class="page-button" value="Войти на сайт" />
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        <script src="/js/view_getters/show_footer.js"></script>
+    </div>
+</body>
+</html>

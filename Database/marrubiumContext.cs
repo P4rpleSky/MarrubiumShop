@@ -64,7 +64,7 @@ namespace MarrubiumShop.Database
                     .HasColumnName("last_name");
 
                 entity.Property(e => e.PhoneNumber)
-                    .HasMaxLength(11)
+                    .HasMaxLength(10)
                     .HasColumnName("phone_number");
             });
 

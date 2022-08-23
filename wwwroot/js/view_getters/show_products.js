@@ -1,4 +1,7 @@
-﻿function get_product_section(product) {
+﻿await show_products();
+export { row, get_product_section, show_products };
+
+function get_product_section(product) {
 
     const product_section = document.createElement("div");
     product_section.className += "product-section";
@@ -145,6 +148,3 @@ async function show_products() {
         } 
     }
 }
-
-show_products();
-export { row, get_product_section, show_products };

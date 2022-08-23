@@ -2,9 +2,7 @@
 
 document.querySelectorAll("select").forEach(s => {
     s.addEventListener("change", e => {
-        //Array.from(document.getElementsByClassName("row products")).forEach(r => { r.remove() })
-        //Array.prototype.forEach.call(document.getElementsByClassName("row more"), r => r.remove());
-        //Array.prototype.forEach.call(document.querySelector("h3"), r => r.remove());
+        e.preventDefault();
         document.getElementById("product-block").innerHTML = '';
         show_products();
     })

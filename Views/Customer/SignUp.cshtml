@@ -1,0 +1,60 @@
+﻿<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/img/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;628&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/css/default.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/sign_up_in.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css" />
+</head>
+<body>
+    <header class="header">
+        <script src="/js/view_getters/show_header.js"></script>
+    </header>
+    <div class="main-block">
+        <div class="sign-up">
+            <h2>Регистрация</h2>
+            <form>
+                <p class="inp">
+                    <label class="s1" for="first_name">Имя</label><br />
+                    <input required class="s1" type="text" placeholder="Акакий" id="first_name" pattern="[а-я А-Я]+" />
+                </p>
+                <p class="inp">
+                    <label class="s1" for="last_name">Фамилия</label><br />
+                    <input required class="s1" type="text" placeholder="Акакиевич" id="last_name" pattern="[а-я А-Я]+" />
+                </p>
+                <p class="inp">
+                    <label class="s1" for="phone">Телефон</label><br />
+                    <input required class="s1" type="tel" placeholder="(XXX)-XXX-XX-XX" id="phone" pattern="9[0-9]{9}"  />
+                    <div id="phone-w" class="s3 warning">Указанный номер телефона уже используется</div>
+                </p>
+                <p class="inp">
+                    <label class="s1" for="email">E-mail</label><br />
+                    <input required class="s1" type="email" placeholder="user@gmail.com" id="email" />
+                    <div id="email-w" class="s3 warning">Указанный адрес e-mail уже используется</div>
+                </p>
+                <p class="inp">
+                    <label class="s1" for="password">Пароль</label><br />
+                    <input required class="s1" type="password" id="password">
+                </p>
+                <p class="inp">
+                    <label class="s1" for="password2">Повторите пароль</label><br />
+                    <input required class="s1" type="password" id="password_copy" />
+                    <div id="password-w" class="s3 warning">Пароли не совпадают</div>
+                </p>
+                <p class="policy">
+                    <input class="s1" type="checkbox" id="confirm" />
+                    <a class="s3">Я принимаю политику конфиденциальности</a>
+                </p>
+                <input disabled type="submit" id="reg" class="page-button" value="Зарегистрироваться"/>
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        <script src="/js/view_getters/show_footer.js"></script>
+    </div>
+    <script src="/js/sign_up_in/sign_up.js"></script>
+</body>
+</html>

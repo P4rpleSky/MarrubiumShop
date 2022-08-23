@@ -1,6 +1,6 @@
 ﻿import { row, get_product_section } from "../view_getters/show_products.js"
 
-show_product_page();
+await show_product_page();
 
 async function show_product_page() {
 

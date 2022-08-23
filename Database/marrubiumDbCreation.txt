@@ -8,36 +8,36 @@ CREATE TYPE function_of_product AS ENUM
 
 DROP TYPE IF EXISTS type_of_skin;
 CREATE TYPE type_of_skin AS ENUM
-('Soft', 'Sensitive', 'Rough')
+('Soft', 'Sensitive', 'Rough');
 
 DROP TABLE IF EXISTS products; 
 CREATE TABLE products
 (
     product_id serial PRIMARY KEY,
-    product_name varchar(32),
+    product_name varchar(32) UNIQUE,
     product_price int,
     product_type type_of_product[],
     product_function function_of_product[],
     skin_type type_of_skin[],
-    image_name varchar(32)
+    image_name varchar(32) UNIQUE
 );
 
 INSERT INTO products(product_name, product_price, product_type, product_function, skin_type, image_name)
 VALUES
 ('Крем с ретинолом', 1000, '{"Lotion"}', '{"Rejuvenating", "Restoring"}', '{"Soft"}', '1_1'),
 ('Лосьон с центеллой', 1500, '{"Serum"}', '{"Rejuvenating"}', '{"Soft", "Sensitive"}', '1_2'),
-('Серум с зеленым чаем', 1200, '{"Serum"}', '{"Rejuvenating", "Restoring"}', '{"Soft"}', '1_3'),
-('Сыворотка с полынью', 1600, '{"Lotion"}', '{"Rejuvenating", "Restoring"}', '{"Soft"}', '1_4'),
+('Серум с зеленым чаем', 1200, '{"Serum"}', '{"Restoring"}', '{"Soft"}', '1_3'),
+('Сыворотка с полынью', 1600, '{"Lotion"}', '{"Restoring"}', '{"Soft"}', '1_4'),
 ('Скраб с ванилью', 900, '{"Cleaning"}', '{"Rejuvenating", "Restoring"}', '{"Soft", "Sensitive"}', '2_1'),
 ('Крем под глаза', 2000, '{"Lotion"}', '{"Rejuvenating", "Restoring"}', '{"Sensitive"}', '2_2'),
 ('Крем с мятой', 1000, '{"Lotion"}', '{"Rejuvenating"}', '{"Soft", "Sensitive"}', '2_3'),
-('Глиняная маска с матча', 800, '{"Mask"}', '{"Rejuvenating"}', '{"Sensitive"}', '2_4'),
-('Черенок от лопаты', 500, '{"Lotion"}', '{"Restoring"}', '{"Rough"}', '3_1'),
-('Гараж', 10000, '{"Lotion"}', '{"Rejuvenating", "Restoring"}', '{"Rough"}', '3_2'),
-('Сосиска в тесте', 50, '{"Lotion"}', '{"Rejuvenating", "Restoring"}', '{"Rough"}', '3_3')
+('Глиняная маска с матча', 800, '{"Mask"}', '{"Restoring"}', '{"Sensitive"}', '2_4'),
+('Черенок от лопаты', 500, '{"Cleaning"}', '{"Restoring"}', '{"Rough"}', '3_1'),
+('Гараж', 10000, '{"Cleaning"}', '{"Rejuvenating", "Restoring"}', '{"Rough"}', '3_2'),
+('Сосиска в тесте', 50, '{"Serum"}', '{"Rejuvenating", "Restoring"}', '{"Rough"}', '3_3');
 
 SELECT *
-FROM products
+FROM products;
 
 
 DROP TABLE IF EXISTS customers; 
@@ -46,7 +46,7 @@ CREATE TABLE customers
     customer_id serial PRIMARY KEY,
     first_name varchar(32),
     last_name varchar(32),
-    phone_number varchar(11) UNIQUE,
+    phone_number varchar(10) UNIQUE,
     customer_password varchar(16),
     customer_email varchar(32) UNIQUE
 );
@@ -84,10 +84,10 @@ DROP TABLE IF EXISTS order_details;
 CREATE TABLE order_details
 (
     order_id int,
-    product_id int,
-    unit_price real,
-    quantity int,
-    discount real,
+    product_id int NOT NULL,
+    unit_price real NOT NULL,
+    quantity int NOT NULL,
+    discount real NOT NULL,
     
     CONSTRAINT FK_details_order_id FOREIGN KEY (order_id) REFERENCES orders(order_id),
     CONSTRAINT FK_details_product_id FOREIGN KEY (product_id) REFERENCES products(product_id)
