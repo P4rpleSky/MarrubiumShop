@@ -1,4 +1,4 @@
-﻿import { row, get_product_section } from "../view_getters/show_products.js"
+﻿import { row, get_product_section } from "../view_getters/product_viewer.js"
 
 await show_product_page();
 

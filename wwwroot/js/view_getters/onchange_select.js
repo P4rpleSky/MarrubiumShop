@@ -1,4 +1,4 @@
-﻿import { show_products } from "../view_getters/show_products.js"
+﻿import { show_products } from "../view_getters/product_viewer.js"
 
 document.querySelectorAll("select").forEach(s => {
     s.addEventListener("change", e => {

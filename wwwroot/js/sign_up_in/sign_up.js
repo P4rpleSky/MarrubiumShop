@@ -50,21 +50,23 @@ async function reg() {
 
         const result = await response.json();
         if (!!result.error) {
-            if (result.error === "exception") {
-                document.getElementsByClassName("sign-up")[0].remove();
-                document.getElementsByClassName("main-block")[0].innerHTML += `
-                    <h2>При регистрации произошла ошибка, попробуйте снова</h2>
-                    <a href="https://localhost:7199/registration" class="page-button">Регистрация</a>`
-                return;
+            if (result.error === "user-password" || result.error === "tel-or-email") {
+                document.getElementById(result.error).style.border = '1px solid red';
+                document.getElementById(result.error + "-w").style.display = "block";
             }
-            document.getElementById(result.error).style.border = '1px solid red';
-            document.getElementById(result.error + "-w").style.display = "block";
-            return;
+            else {
+                document.getElementsByClassName("sign-in")[0].remove();
+                document.getElementsByClassName("main-block")[0].innerHTML += `
+                    <h2>${result.error}</h2>
+                    <a href="https://localhost:7199/login" class="page-button">Регистрация</a>`
+            }
         }
-        document.getElementsByClassName("sign-up")[0].remove();
-        document.getElementsByClassName("main-block")[0].innerHTML += `
-            <h2 charset='utf-8'>Вы были успешно зарегистрированы на сайте!</h2>
+        else {
+            document.getElementsByClassName("sign-up")[0].remove();
+            document.getElementsByClassName("main-block")[0].innerHTML += `
+            <h2 charset='utf-8'>${result.Message}</h2>
             <a href="https://localhost:7199/login" class="page-button">Войти на сайт</a>`
+        }
     }
 }
 

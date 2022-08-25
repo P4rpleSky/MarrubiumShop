@@ -9,12 +9,6 @@ namespace MarrubiumShop.Controllers
 {
     public class CatalogController : Controller
     {
-        private static JsonSerializerOptions _jsonOptions = new JsonSerializerOptions
-        {
-            Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
-            WriteIndented = true
-        };
-
         public IActionResult Main()
         {
             return View("Catalog");
@@ -51,7 +45,7 @@ namespace MarrubiumShop.Controllers
                             break;
                     }
                 }
-                return Json(products.ToList(), _jsonOptions);
+                return Json(products.ToList(), JsonDefaultOptions.Serializer);
             }
         }
 
@@ -86,8 +80,59 @@ namespace MarrubiumShop.Controllers
                     .Take(4);
                 productAndRecommended.Add(currentProduct);
                 productAndRecommended.AddRange(recommended);
-                return Json(productAndRecommended.ToList(), _jsonOptions);
+                return Json(productAndRecommended.ToList(), JsonDefaultOptions.Serializer);
             }
+        }
+
+        [HttpPut("{productId}/add_to_fav")]
+        public IActionResult AddToFavourite(int productId)
+        {
+            var email = HttpContext.User.Identity.Name;
+            if (email is null)
+                return Json(
+                        new { Error = "Вы не можете добавлять в избранное товары без авторизации на сайте!" },
+                        JsonDefaultOptions.Serializer);
+            using (var db = new marrubiumContext())
+            {
+                var user = db.Customers.FirstOrDefault(c => c.CustomerEmail == email);
+                var favouriteProduct = db.CustomerFavourites
+                    .FirstOrDefault(c => c.CustomerId == user.CustomerId && c.ProductId == productId);
+                if (favouriteProduct != null)
+                    return Json(
+                        new { Error = "Этот продукт уже был добавлен в избранное!" },
+                        JsonDefaultOptions.Serializer);
+                var item = new CustomerFavourite()
+                {
+                    CustomerId = user.CustomerId,
+                    ProductId = productId
+                };
+                db.CustomerFavourites.Add(item);
+                db.SaveChanges();
+            }
+            return Json(new { Result = "success" });
+        }
+
+        [HttpDelete("{productId}/delete_from_fav")]
+        public IActionResult DeleteFromFavourite(int productId)
+        {
+            var email = HttpContext.User.Identity.Name;
+            if (email is null)
+                return Json(
+                        new { Error = "Вы не можете удалять товары из избранного без авторизации на сайте!" },
+                        JsonDefaultOptions.Serializer);
+            using (var db = new marrubiumContext())
+            {
+                var user = db.Customers.FirstOrDefault(c => c.CustomerEmail == email);
+                var favouriteProduct = db.CustomerFavourites
+                    .FirstOrDefault(c => c.CustomerId == user.CustomerId && c.ProductId == productId);
+                if (favouriteProduct is null)
+                    return Json(
+                        new { Error = "Этот продукт уже был удален из избранного!" },
+                        JsonDefaultOptions.Serializer);
+                db.CustomerFavourites.Remove(favouriteProduct);
+                db.SaveChanges();
+            }
+            return Json(new { Result = "success" });
         }
     }
 }

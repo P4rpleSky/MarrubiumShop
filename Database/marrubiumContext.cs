@@ -1,5 +1,8 @@
-﻿using MarrubiumShop.Models;
+﻿using System;
+using System.Collections.Generic;
+using MarrubiumShop.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace MarrubiumShop.Database
 {
@@ -70,7 +73,8 @@ namespace MarrubiumShop.Database
 
             modelBuilder.Entity<CustomerCart>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.CustomerId, e.ProductId })
+                    .HasName("customer_cart_pkey");
 
                 entity.ToTable("customer_cart");
 
@@ -78,20 +82,25 @@ namespace MarrubiumShop.Database
 
                 entity.Property(e => e.ProductId).HasColumnName("product_id");
 
+                entity.Property(e => e.Quantity).HasColumnName("quantity");
+
                 entity.HasOne(d => d.Customer)
-                    .WithMany()
+                    .WithMany(p => p.CustomerCarts)
                     .HasForeignKey(d => d.CustomerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_cart_customer_id");
 
                 entity.HasOne(d => d.Product)
-                    .WithMany()
+                    .WithMany(p => p.CustomerCarts)
                     .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_cart_product_id");
             });
 
             modelBuilder.Entity<CustomerFavourite>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.CustomerId, e.ProductId })
+                    .HasName("customer_favourites_pkey");
 
                 entity.ToTable("customer_favourites");
 
@@ -99,14 +108,18 @@ namespace MarrubiumShop.Database
 
                 entity.Property(e => e.ProductId).HasColumnName("product_id");
 
+                entity.Property(e => e.AddDate).HasColumnName("add_date");
+
                 entity.HasOne(d => d.Customer)
-                    .WithMany()
+                    .WithMany(p => p.CustomerFavourites)
                     .HasForeignKey(d => d.CustomerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_favourites_customer_id");
 
                 entity.HasOne(d => d.Product)
-                    .WithMany()
+                    .WithMany(p => p.CustomerFavourites)
                     .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_favourites_product_id");
             });
 
@@ -126,34 +139,45 @@ namespace MarrubiumShop.Database
 
             modelBuilder.Entity<OrderDetail>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.OrderId, e.ProductId })
+                    .HasName("order_details_pkey");
 
                 entity.ToTable("order_details");
 
-                entity.Property(e => e.Discount).HasColumnName("discount");
-
-                entity.Property(e => e.OrderId).HasColumnName("order_id");
+                entity.Property(e => e.OrderId)
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("order_id");
 
                 entity.Property(e => e.ProductId).HasColumnName("product_id");
+
+                entity.Property(e => e.Discount).HasColumnName("discount");
 
                 entity.Property(e => e.Quantity).HasColumnName("quantity");
 
                 entity.Property(e => e.UnitPrice).HasColumnName("unit_price");
 
                 entity.HasOne(d => d.Order)
-                    .WithMany()
+                    .WithMany(p => p.OrderDetails)
                     .HasForeignKey(d => d.OrderId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_details_order_id");
 
                 entity.HasOne(d => d.Product)
-                    .WithMany()
+                    .WithMany(p => p.OrderDetails)
                     .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_details_product_id");
             });
 
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.ToTable("products");
+
+                entity.HasIndex(e => e.ImageName, "products_image_name_key")
+                    .IsUnique();
+
+                entity.HasIndex(e => e.ProductName, "products_product_name_key")
+                    .IsUnique();
 
                 entity.Property(e => e.ProductId).HasColumnName("product_id");
 
@@ -172,7 +196,6 @@ namespace MarrubiumShop.Database
                 entity.Property(e => e.Function).HasColumnName("product_function");
 
                 entity.Property(e => e.SkinType).HasColumnName("skin_type");
-
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -3,9 +3,7 @@ using MarrubiumShop.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Claims;
-using System;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Authentication;
 
@@ -46,10 +44,14 @@ namespace MarrubiumShop.Controllers
                         return Json(new { Error = "phone" });
                 }
                 if (customer.GetType().GetProperties().Any(p => p is null))
-                    return Json(new { Error = "exception" });
+                    return Json(
+                        new { Error = "При регистрации произошла ошибка, попробуйте снова" }, 
+                        JsonDefaultOptions.Serializer);
                 db.Customers.Add(customer);
                 db.SaveChanges();
-                return Json(new { Result = "success" });
+                return Json(
+                    new { Message = "Вы были успешно зарегистрированы на сайте!" },
+                    JsonDefaultOptions.Serializer);
             }
         }
 
@@ -58,7 +60,9 @@ namespace MarrubiumShop.Controllers
         {
             var customer = await Request.ReadFromJsonAsync<Customer>();
             if (customer.CustomerEmail == "" || customer.CustomerPassword == "")
-                return Json(new { Error = "exception" });
+                return Json(
+                    new { Error = "При входе на сайт произошла ошибка, попробуйте снова" },
+                    JsonDefaultOptions.Serializer);
             using (var db = new marrubiumContext())
             {
                 foreach (var c in db.Customers)
@@ -67,7 +71,7 @@ namespace MarrubiumShop.Controllers
                     {
                         if (c.CustomerPassword != customer.CustomerPassword)
                             return Json(new { Error = "user-password" });
-                        var claims = new List<Claim> { new Claim(ClaimTypes.Name, customer.CustomerEmail) };
+                        var claims = new List<Claim> { new Claim(ClaimTypes.Name, c.CustomerEmail) };
                         ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "Cookies");
                         await HttpContext.SignInAsync(
                             CookieAuthenticationDefaults.AuthenticationScheme,

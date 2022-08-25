@@ -15,11 +15,11 @@ CREATE TABLE products
 (
     product_id serial PRIMARY KEY,
     product_name varchar(32) UNIQUE,
-    product_price int,
-    product_type type_of_product[],
-    product_function function_of_product[],
-    skin_type type_of_skin[],
-    image_name varchar(32) UNIQUE
+    product_price int NOT NULL,
+    product_type type_of_product[] NOT NULL,
+    product_function function_of_product[] NOT NULL,
+    skin_type type_of_skin[] NOT NULL,
+    image_name varchar(32) UNIQUE NOT NULL
 );
 
 INSERT INTO products(product_name, product_price, product_type, product_function, skin_type, image_name)
@@ -44,8 +44,8 @@ DROP TABLE IF EXISTS customers;
 CREATE TABLE customers
 (
     customer_id serial PRIMARY KEY,
-    first_name varchar(32),
-    last_name varchar(32),
+    first_name varchar(32) NOT NULL,
+    last_name varchar(32) NOT NULL,
     phone_number varchar(10) UNIQUE,
     customer_password varchar(16),
     customer_email varchar(32) UNIQUE
@@ -56,7 +56,10 @@ CREATE TABLE customer_favourites
 (
     customer_id int,
     product_id int,
-    
+	add_date date,
+	
+    PRIMARY KEY (customer_id, product_id),
+	
     CONSTRAINT FK_favourites_customer_id FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
     CONSTRAINT FK_favourites_product_id FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
@@ -66,7 +69,9 @@ CREATE TABLE customer_cart
 (
     customer_id int,
     product_id int,
-    
+	quantity int,
+    PRIMARY KEY (customer_id, product_id),
+	
     CONSTRAINT FK_cart_customer_id FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
     CONSTRAINT FK_cart_product_id FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
@@ -75,7 +80,7 @@ DROP TABLE IF EXISTS orders;
 CREATE TABLE orders
 (
     order_id serial PRIMARY KEY,
-    customer_id int,       
+    customer_id int,
     
     CONSTRAINT FK_favourites_customer_id FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
 );
@@ -83,14 +88,18 @@ CREATE TABLE orders
 DROP TABLE IF EXISTS order_details; 
 CREATE TABLE order_details
 (
-    order_id int,
-    product_id int NOT NULL,
+    order_id serial,
+    product_id int,
     unit_price real NOT NULL,
     quantity int NOT NULL,
     discount real NOT NULL,
+	PRIMARY KEY (order_id, product_id),
     
-    CONSTRAINT FK_details_order_id FOREIGN KEY (order_id) REFERENCES orders(order_id),
+	CONSTRAINT FK_details_order_id FOREIGN KEY (order_id) REFERENCES orders(order_id),
     CONSTRAINT FK_details_product_id FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
+
+
+
 
 

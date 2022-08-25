@@ -36,15 +36,16 @@ async function login() {
 
         const result = await response.json();
         if (!!result.error) {
-            if (result.error === "exception") {
+            if (result.error === "user-password" || result.error === "tel-or-email") {
+                document.getElementById(result.error).style.border = '1px solid red';
+                document.getElementById(result.error + "-w").style.display = "block";
+            }
+            else {
                 document.getElementsByClassName("sign-in")[0].remove();
                 document.getElementsByClassName("main-block")[0].innerHTML += `
-                    <h2>При входе на сайт произошла ошибка, попробуйте снова</h2>
+                    <h2>${result.error}</h2>
                     <a href="https://localhost:7199/login" class="page-button">Войти на сайт</a>`
-                return;
             }
-            document.getElementById(result.error).style.border = '1px solid red';
-            document.getElementById(result.error + "-w").style.display = "block";
             return;
         }
         window.location.replace("https://localhost:7199/");

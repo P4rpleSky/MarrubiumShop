@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Models\Customer.cs" />
-    <Content Include="Database\marrubiumContext.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
