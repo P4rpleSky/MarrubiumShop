@@ -46,9 +46,9 @@ CREATE TABLE customers
     customer_id serial PRIMARY KEY,
     first_name varchar(32) NOT NULL,
     last_name varchar(32) NOT NULL,
-    phone_number varchar(10) UNIQUE,
-    customer_password varchar(16),
-    customer_email varchar(32) UNIQUE
+    phone_number varchar(10) UNIQUE NOT NULL,
+    customer_password varchar(16) NOT NULL,
+    customer_email varchar(32) UNIQUE NOT NULL
 );
 
 DROP TABLE IF EXISTS customer_favourites; 

@@ -34,6 +34,10 @@ namespace MarrubiumShop.Controllers
         public async Task<IActionResult> Registrate()
         {
             var customer = await Request.ReadFromJsonAsync<Customer>();
+            if (customer is null)
+                return Json(
+                    new { Error = "При регистрации произошла ошибка, попробуйте снова" },
+                    JsonDefaultOptions.Serializer);
             using (var db = new marrubiumContext())
             {
                 foreach (var c in db.Customers)
@@ -59,7 +63,7 @@ namespace MarrubiumShop.Controllers
         public async Task<IActionResult> Login()
         {
             var customer = await Request.ReadFromJsonAsync<Customer>();
-            if (customer.CustomerEmail == "" || customer.CustomerPassword == "")
+            if (customer is null || customer.CustomerEmail == "" || customer.CustomerPassword == "")
                 return Json(
                     new { Error = "При входе на сайт произошла ошибка, попробуйте снова" },
                     JsonDefaultOptions.Serializer);

@@ -1,6 +1,6 @@
-﻿import { add_to_fav, delete_from_fav } from "../favourite_changer/fav_add_delete.js"
+﻿import { add_user_product, delete_user_product, get_user_products } from "../status_changer/favourite.js"
 
-function get_product_section(product) {
+function get_product_section(product, isInFavourite) {
 
     const product_section = document.createElement("div");
     product_section.className += "product-section";
@@ -20,14 +20,15 @@ function get_product_section(product) {
     const like_button = document.createElement("a");
     like_button.className += "set-like";
     like_button.className += " favourite"
+    like_button.style.backgroundImage = isInFavourite ? 'url("../img/favourite_click.png")' : "";
     like_button.addEventListener("click", e => {
         e.preventDefault();
         if (like_button.style.backgroundImage == 'url("../img/favourite_click.png")') {
-            Promise.resolve(delete_from_fav(product.ProductId)).then();
+            Promise.resolve(delete_user_product(product.ProductId)).then();
             like_button.style.backgroundImage = "";
         }
         else {
-            Promise.resolve(add_to_fav(product.ProductId)).then();
+            Promise.resolve(add_user_product(product.ProductId)).then();
             like_button.style.backgroundImage = 'url("../img/favourite_click.png")';
         }     
     })
@@ -103,7 +104,7 @@ async function show_products() {
     select = document.getElementById('sorting');
     let order = select.options[select.selectedIndex].value;
 
-    const response = await fetch("/catalog.json", {
+    const catalog = await fetch("/catalog.json", {
         body: JSON.stringify({
             Type: productType,
             Function: func,
@@ -113,9 +114,10 @@ async function show_products() {
         method: "POST",
         headers: { "Accept": "application/json", "Content-Type": "application/json" }
     });
-    if (response.ok === true) {
+    const user_favourites = await get_user_products();
+    if (catalog.ok === true) {
         const rows = document.getElementById("product-block");
-        const products = await response.json();
+        const products = await catalog.json();
         if (products.length === 0) {
             const response_text = document.createElement("h3");
             response_text.append("Товаров по данному запросу не найдено, попробуйте изменить фильтры");
@@ -125,7 +127,17 @@ async function show_products() {
         let product_sections = [];
         if (document.getElementsByClassName('products').length === 0) {
             for (let i = 0; i < Math.min(products.length, 8); i++) {
-                product_sections.push(get_product_section(products[i]))
+                let isInFavourite = false;
+                if (user_favourites.Error === undefined) {
+                    user_favourites.every(p => {
+                        if (p.ProductId === products[i].ProductId) {
+                            isInFavourite = true;
+                            return false;
+                        }
+                        return true;
+                    });
+                };
+                product_sections.push(get_product_section(products[i], isInFavourite))
                 if (product_sections.length % 4 === 0) {
                     rows.append(row(product_sections));
                     product_sections = [];
@@ -138,7 +150,17 @@ async function show_products() {
             let buttons = document.getElementsByClassName('page-button');
             buttons[0].parentNode.parentNode.removeChild(buttons[0].parentNode);
             for (let i = 8; i < products.length; i++) {
-                product_sections.push(get_product_section(products[i]));
+                let isInFavourite = false;
+                if (user_favourites.Error === undefined) {
+                    user_favourites.every(p => {
+                        if (p.ProductId === products[i].ProductId) {
+                            isInFavourite = true;
+                            return false;
+                        }
+                        return true;
+                    });
+                };
+                product_sections.push(get_product_section(products[i], isInFavourite));
                 if (product_sections.length % 4 === 0) {
                     rows.append(row(product_sections));
                     product_sections = [];
