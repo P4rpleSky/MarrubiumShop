@@ -21,6 +21,8 @@ namespace MarrubiumShop.Controllers
             using (var db = new marrubiumContext())
             {
                 IEnumerable<Product> products = db.Products;
+                if (sort is null)
+                    return Json(products.ToList(), JsonDefaultOptions.Serializer);
                 if (sort.Type != "Тип продукта" && sort.Type != "all")
                     products = products.Where(p => p.Type.Any(t => string.Equals(t, sort.Type, StringComparison.OrdinalIgnoreCase)));
                 if (sort.Function != "По функции" && sort.Function != "all")

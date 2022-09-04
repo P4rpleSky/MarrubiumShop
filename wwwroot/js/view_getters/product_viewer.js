@@ -1,4 +1,4 @@
-﻿import { add_user_product, delete_user_product, get_user_products } from "../status_changer/favourite.js"
+﻿import { add_user_product, delete_user_product, get_user_products } from "../status_changer/status_changer.js"
 
 function get_product_section(product, isInFavourite) {
 
@@ -24,11 +24,11 @@ function get_product_section(product, isInFavourite) {
     like_button.addEventListener("click", e => {
         e.preventDefault();
         if (like_button.style.backgroundImage == 'url("../img/favourite_click.png")') {
-            Promise.resolve(delete_user_product(product.ProductId)).then();
+            Promise.resolve(delete_user_product("favourite", product.ProductId)).then();
             like_button.style.backgroundImage = "";
         }
         else {
-            Promise.resolve(add_user_product(product.ProductId)).then();
+            Promise.resolve(add_user_product("favourite", product.ProductId)).then();
             like_button.style.backgroundImage = 'url("../img/favourite_click.png")';
         }     
     })
@@ -114,7 +114,7 @@ async function show_products() {
         method: "POST",
         headers: { "Accept": "application/json", "Content-Type": "application/json" }
     });
-    const user_favourites = await get_user_products();
+    const user_favourites = await get_user_products("favourite");
     if (catalog.ok === true) {
         const rows = document.getElementById("product-block");
         const products = await catalog.json();

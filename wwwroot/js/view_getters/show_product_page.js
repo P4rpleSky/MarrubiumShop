@@ -1,4 +1,5 @@
 ﻿import { row, get_product_section } from "../view_getters/product_viewer.js"
+import { get_user_products } from "../status_changer/status_changer.js"
 
 await show_product_page();
 
@@ -91,8 +92,21 @@ async function show_product_page() {
         <h3 id="recommended">Рекомендации</h3>`;
 
         let product_sections = [];
-        for (let i = 1; i < products.length; i++)
-            product_sections.push(get_product_section(products[i]));
+        const user_favourites = await get_user_products("favourite");
+        for (let i = 1; i < products.length; i++) {
+
+            let isInFavourite = false;
+            if (user_favourites.Error === undefined) {
+                user_favourites.every(p => {
+                    if (p.ProductId === products[i].ProductId) {
+                        isInFavourite = true;
+                        return false;
+                    }
+                    return true;
+                });
+            };
+            product_sections.push(get_product_section(products[i], isInFavourite));
+        }
         product_section.append(row(product_sections));
         main.append(product_section);
         const like_button = document.getElementById("big-set-like");

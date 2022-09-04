@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS products;
 CREATE TABLE products
 (
     product_id serial PRIMARY KEY,
-    product_name varchar(32) UNIQUE,
+    product_name varchar(32) UNIQUE NOT NULL,
     product_price int NOT NULL,
     product_type type_of_product[] NOT NULL,
     product_function function_of_product[] NOT NULL,
