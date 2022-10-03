@@ -1,7 +1,17 @@
 ﻿import { row, get_product_section } from "../view_getters/product_viewer.js"
-import { get_user_products } from "../status_changer/status_changer.js"
+import { add_user_product, delete_user_product, get_user_products } from "../status_changer/status_changer.js"
 
 await show_product_page();
+const quantity = document.getElementById("quantity");
+document.getElementById("plus").addEventListener("click", e => {
+    /*e.preventDefault();*/
+    quantity.innerText = Number(quantity.innerText) + 1;
+});
+
+document.getElementById("minus").addEventListener("click", e => {
+    /*e.preventDefault();*/
+    quantity.innerText = Number(quantity.innerText) - 1;
+});
 
 async function show_product_page() {
 
@@ -81,7 +91,7 @@ async function show_product_page() {
                 <div class="buttons-row">
                     <div class="amount-multibutton">
                         <a id="minus"></a>
-                        <a id="amount">1</a>
+                        <div id="quantity">1</div>
                         <a id="plus"></a>
                     </div>
                     <a id="big-set-like"></a>
@@ -93,29 +103,47 @@ async function show_product_page() {
 
         let product_sections = [];
         const user_favourites = await get_user_products("favourite");
-        for (let i = 1; i < products.length; i++) {
+        if (user_favourites.Error === undefined) {
+            for (let i = 1; i < products.length; i++) {
 
-            let isInFavourite = false;
-            if (user_favourites.Error === undefined) {
-                user_favourites.every(p => {
-                    if (p.ProductId === products[i].ProductId) {
-                        isInFavourite = true;
-                        return false;
-                    }
-                    return true;
-                });
-            };
-            product_sections.push(get_product_section(products[i], isInFavourite));
+                let isInFavourite = false;
+                if (user_favourites.Error === undefined) {
+                    user_favourites.every(p => {
+                        if (p.ProductId === products[i].ProductId) {
+                            isInFavourite = true;
+                            return false;
+                        }
+                        return true;
+                    });
+                };
+                product_sections.push(get_product_section(products[i], isInFavourite));
+            }
         }
         product_section.append(row(product_sections));
         main.append(product_section);
+
+        let isInFavourite = false;
+        if (user_favourites.Error === undefined) {
+            user_favourites.every(p => {
+                if (p.ProductId === products[0].ProductId) {
+                    isInFavourite = true;
+                    return false;
+                }
+                return true;
+            });
+        };
         const like_button = document.getElementById("big-set-like");
+        like_button.style.backgroundImage = isInFavourite ? 'url("../img/big_favourite_click.png")' : "";
         like_button.addEventListener("click", e => {
             e.preventDefault();
-            if (like_button.style.backgroundImage == 'url("../img/big_favourite_click.png")')
+            if (like_button.style.backgroundImage == 'url("../img/big_favourite_click.png")') {
+                Promise.resolve(delete_user_product("favourite", products[0].ProductId)).then();
                 like_button.style.backgroundImage = "";
-            else
+            }
+            else {
+                Promise.resolve(add_user_product("favourite", products[0].ProductId)).then();
                 like_button.style.backgroundImage = 'url("../img/big_favourite_click.png")';
+            }
         })
         product_sections = [];
     }    

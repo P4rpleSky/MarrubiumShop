@@ -54,7 +54,7 @@ h2 {
     background-image: url("../img/minus.png");
 }
 
-#amount {
+#quantity {
     display: flex;
     align-items: center;
     justify-content: center;
